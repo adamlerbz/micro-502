@@ -30,9 +30,32 @@ def euler2rotmat(euler_angles):
     
     return R
 
+# Create a rotation matrix from the world frame to the body frame using a quaternion
+def quaternion2rotmat(quaternion):
+        
+        R = np.eye(3)
+        
+        # Here you need to calculate the rotation matrix from a quaternion
+    
+        # Inputs:
+        #           quaternion: A list of 4 numbers [x, y, z, w] that represents the quaternion
+        # Outputs:
+        #           R: A 3x3 numpy array that represents the rotation matrix of the quaternion
+        
+        
+        # --- SAMPLE SOLUTION ---
+
+        x, y, z, w = quaternion
+        
+        R = np.array([[1 - 2*y**2 - 2*z**2, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
+                    [2*x*y + 2*z*w, 1 - 2*x**2 - 2*z**2, 2*y*z - 2*x*w],
+                    [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x**2 - 2*y**2]])
+        
+        return R
+
 
 # Rotate the control commands from the body reference frame to the inertial reference frame
-def rot_body2inertial(control_commands, euler_angles):
+def rot_body2inertial(control_commands, euler_angles, quaternion):
     
     # Here you need to rotate the control commands from the body reference frame to the inertial reference frame
     # You should use the euler2rotmat function to get the rotation matrix

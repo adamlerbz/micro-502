@@ -16,13 +16,20 @@ def euler2rotmat(euler_angles):
     
     # --- YOUR CODE HERE ---
 
-    # R_roll = 
-    # R_pitch = 
-    # R_yaw = 
+    R_yaw = [[np.cos(euler_angles[2]), -np.sin(euler_angles[2]), 0],
+            [np.sin(euler_angles[2]), np.cos(euler_angles[2]), 0],
+            [0,0,1]]
+    R_pitch = [[np.cos(euler_angles[1]), 0, np.sin(euler_angles[1])],
+               [0, 1, 0],
+               [-np.sin(euler_angles[1]),0,np.cos(euler_angles[1])]]
+    R_roll = [[1, 0, 0],
+              [0, np.cos(euler_angles[0]), -np.sin(euler_angles[0])],
+              [0,np.sin(euler_angles[0]),np.cos(euler_angles[0])]]
 
-    # R =
+    R = np.matmul(np.matmul(R_yaw,R_pitch),R_roll)
     
     return R
+
 
 # Rotate the control commands from the body reference frame to the inertial reference frame
 def rot_body2inertial(control_commands, euler_angles):
@@ -38,16 +45,15 @@ def rot_body2inertial(control_commands, euler_angles):
     # Outputs:
     #           control_commands: A list of 4 control commands [vel_x, vel_y, altitude, yaw_rate] in the inertial reference frame
 
-    # --- YOUR CODE HERE ---
+    # --- YOUR CODE HERE 
 
-    # vel_world = 
+    vel_world = [control_commands[0],control_commands[1],0]
     
-    # R = 
+    R = euler2rotmat(euler_angles)
     
-    # vel_body = 
+    vel_body = np.matmul(R,vel_world)
     
-    # control_commands = 
-
+    control_commands = [vel_body[0],vel_body[1], control_commands[2],control_commands[3]]
 
 
     return control_commands

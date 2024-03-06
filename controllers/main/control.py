@@ -11,13 +11,13 @@ class quadrotor_controller():
 
         # Exercise 1: Tune gains (we suggest: P < 25, I = 0 in most cases, D < 2)
         gains = {   
-                    "P_rate_rp": 0.2,   "I_rate_rp":0.0,    "D_rate_rp": 0.03,
+                    "P_rate_rp": 0.1,   "I_rate_rp":0.007,    "D_rate_rp": 0.005,
                     "P_rate_y": 0.001,   "I_rate_y": 0.0,    "D_rate_y": 0.0,
                     "P_att": 11.0,      "I_att":0.0,        "D_att": 0.0,
-                    "P_vel_xy": 1.0,    "I_vel_xy": 0.0,    "D_vel_xy": 0.0,
-                    "P_vel_z": 4.0,        "I_vel_z": 1.0,     "D_vel_z": 0.1,
+                    "P_vel_xy": 3.5,    "I_vel_xy": 0.09,    "D_vel_xy": 0.5,
+                    "P_vel_z": 8.0,        "I_vel_z": 1.4,     "D_vel_z": 1.4,
                     "P_pos_xy": 4.0,    "I_pos_xy": 0.0,    "D_pos_xy": 0.0,
-                    "P_pos_z": 4.0,     "I_pos_z": 0.0,     "D_pos_z": 0.0,
+                    "P_pos_z": 6.0,     "I_pos_z": 0.0,     "D_pos_z": 2.0,
                 }
         
         # Bonus: Increase limits and retune

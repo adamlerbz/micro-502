@@ -7,15 +7,15 @@ from scipy.spatial.transform import Rotation as R
 class quadrotor_controller():
     def __init__(self):
         # Exercise 1: Choose what to tune ["vel_z", "pos_z", "rate_rp", "rate_y", "att", "vel_xy", "pos_xy"]
-        self.tuning_level = "off"
+        self.tuning_level = "rate_y"
 
         # Exercise 1: Tune gains (we suggest: P < 25, I = 0 in most cases, D < 2)
         gains = {   
-                    "P_rate_rp": 0.1,   "I_rate_rp":0.007,    "D_rate_rp": 0.005,
-                    "P_rate_y": 0.001,   "I_rate_y": 0.0,    "D_rate_y": 0.0,
+                    "P_rate_rp": 0.3,   "I_rate_rp":0.007,    "D_rate_rp": 0.01,
+                    "P_rate_y": 0.004,   "I_rate_y": 0.000004,    "D_rate_y": 0.00017,
                     "P_att": 11.0,      "I_att":0.0,        "D_att": 0.0,
-                    "P_vel_xy": 3.5,    "I_vel_xy": 0.09,    "D_vel_xy": 0.5,
-                    "P_vel_z": 8.0,        "I_vel_z": 1.4,     "D_vel_z": 1.4,
+                    "P_vel_xy": 7.2,    "I_vel_xy": 1.5,    "D_vel_xy": 1.5,
+                    "P_vel_z": 7.6,        "I_vel_z": 1.6,     "D_vel_z": 1.5,
                     "P_pos_xy": 4.0,    "I_pos_xy": 0.0,    "D_pos_xy": 0.0,
                     "P_pos_z": 6.0,     "I_pos_z": 0.0,     "D_pos_z": 2.0,
                 }
